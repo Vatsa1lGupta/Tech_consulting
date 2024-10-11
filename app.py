@@ -40,8 +40,8 @@ latest_feedback = [
     {"name": "Andrii Zarypov", "feedback": "I have a few comments about the content. It might be improved with real cases."}
 ]
 
-files = ["D:/MBA/SPJIMR/Curriculum/Term - 4/Technology Consulting/Pre-reads/Session 3-4/05 06 Reading 02 The Pyramid Principle.pdf",
-         "D:/MBA/SPJIMR/Curriculum/Term - 4/Technology Consulting/Pre-reads/Session 3-4/05 06 Reading 03 Writing Clarifies Thinking.pdf",
+files = ["05 06 Reading 02 The Pyramid Principle.pdf",
+         "05 06 Reading 03 Writing Clarifies Thinking.pdf",
          ]
 api_key = 'AIzaSyAr5RPuvqHfe8OHSmo2vqKHITudPIeEhhs'  # Replace with your OpenAI API key
 
