@@ -91,23 +91,41 @@ chat = model.start_chat(history=[])
 def generate_adaptive_quiz():
     prompt = f"{texts} \n ok, read the above given text. I want you to generate an adaptive quiz of 10 questions on it . you will pass each question one by one and pass 4 options for each and capture response from the quiz taker after each question. if the answer entered is right then ask a slightly difficult question for the next one"
     print("=========================================", prompt)
+    
+    
+    
+    
     response = chat.send_message(prompt, stream=True)
-    print(response)
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
+    
+    for message in st.session_state.messages:
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
     for chunk in response:
         if chunk.text:
           st.write(chunk.text)
     
     
     
-    while True:
-        prompt1 = st.text_input("your answer:", None )
-        st.stop()
-        if (prompt1 == "exit"):
-            break
-        response = chat.send_message(prompt1, stream=True)
-        for chunk in response:
-            if chunk.text:
-              st.write(chunk.text)
+    i=1 
+    prompt1 = st.chat_input("your answer:", key=i)
+    with st.chat_message("quiz"):
+        
+        if prompt1:
+            st.session_state.messages.append({"role": "user", "content": prompt1})
+            with st.chat_message("user"):
+               st.markdown(prompt)
+            #if (prompt1 == "exit"):
+            #    break
+            stream = chat.send_message(prompt1, stream=True)
+            
+            response = st.write_stream(stream)
+    st.session_state.messages.append({"role": "assistant", "content": response})
+            #for chunk in response:
+            #    if chunk.text:
+            #      st.write(chunk.text)
+        
 
 
 
