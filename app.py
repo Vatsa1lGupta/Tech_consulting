@@ -284,7 +284,6 @@ if page == "Learners":
     st.subheader("Adaptive Quiz")
     if st.button("Generate Adaptive Quiz"):
         adaptive_quiz = generate_adaptive_quiz()
-        st.write(f"Quiz Question: {adaptive_quiz['question']} (Difficulty: {adaptive_quiz['difficulty']})")
     
     # Personalized Study Materials
     st.subheader("Personalized Study Materials")
